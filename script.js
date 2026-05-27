@@ -1,7 +1,15 @@
-const API_KEY = 'AIzaSyCwX8V2wwT5pMGWUGGqiVqkR7S_oDkysdk'; 
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+import { GoogleGenAI } from '@google/generative-ai';
 
-const SYSTEM_INSTRUCTION = "You are not a robot. You are a high-energy, incredibly passionate, and empathetic Indian teacher inspired by the legendary Alakh Pandey (Physics Wallah) style. Your goal is to teach Commerce, Economics, and IT. Follow these strict rules: 1. Speak in a natural mix of Hindi and English (Hinglish)—just like a friendly elder brother or coach would talk to a student in Mumbai. 2. Use high-energy catchphrases like: 'Suno bhai!', 'Concept ko feel karo!', 'Ratta mat maaro', and 'Dhyan se suniye!' 3. To explain tough concepts, ALWAYS use relatable local examples (e.g., how a local Vada Pav stall manages profits, how shopkeepers in retail markets track inventory, or how local business firms operate). 4. Break down complex topics into super simple, step-by-step logic. Never write boring textbooks paragraphs. Use bullet points and exclamation marks to keep the energy high! 5. End your explanations by checking in on their energy (e.g., 'Samajh aaya kya?' or 'Clear hua?').";
+// Live Google Secure Key
+const API_KEY = 'AIzaSyCwX8V2wwT5pMGWUGGqiVqkR7S_oDkysdk';
+const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+const SYSTEM_INSTRUCTION = `You are not a robot. You are a high-energy, incredibly passionate, and empathetic Indian teacher inspired by the legendary Alakh Pandey (Physics Wallah) style. Your goal is to teach Commerce, Economics, and IT. Follow these strict rules:
+1. Speak in a natural mix of Hindi and English (Hinglish)—just like a friendly elder brother or coach would talk to a student in Mumbai.
+2. Use high-energy catchphrases like: "Suno bhai!", "Concept ko feel karo!", "Ratta mat maaro", and "Dhyan se suniye!"
+3. To explain tough concepts, ALWAYS use relatable local examples (e.g., how a local Vada Pav stall manages profits, how shopkeepers in retail markets track inventory, or how local business firms operate).
+4. Break down complex topics into super simple, step-by-step logic. Never write boring textbooks paragraphs. Use bullet points and exclamation marks to keep the energy high!
+5. End your explanations by checking in on their energy (e.g., "Samajh aaya kya?" or "Clear hua?").`;
 
 const chatBox = document.getElementById('chatBox');
 const userInput = document.getElementById('userInput');
@@ -21,28 +29,26 @@ function appendMessage(text, sender) {
 async function askAlakhSir(userMessage) {
     appendMessage("EduAI is thinking...", "ai");
     const loadingMessage = chatBox.lastChild;
-    const fullPrompt = `${SYSTEM_INSTRUCTION}\n\nUser Question: ${userMessage}`;
 
     try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: fullPrompt }] }]
-            })
+        // Connecting safely through Google SDK container
+        const model = ai.getGenerativeModel({ 
+            model: 'gemini-1.5-flash',
+            systemInstruction: SYSTEM_INSTRUCTION
         });
 
-        if (!response.ok) throw new Error(`API status error`);
+        const result = await model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: userMessage }] }]
+        });
 
-        const data = await response.json();
-        const aiResponse = data.candidates[0].content.parts[0].text;
+        const aiResponse = result.response.text();
         
         loadingMessage.remove();
         appendMessage(aiResponse, "ai");
 
     } catch (error) {
         if (loadingMessage) loadingMessage.remove();
-        appendMessage("Suno bhai, lagta hai network mein thoda crash hua hai! Dubara try karo! 🛠️", "ai");
+        appendMessage("Suno bhai, lagta hai backend server configuration mein scene hua hai! Let's get it running! 🛠️", "ai");
         console.error(error);
     }
 }
@@ -56,7 +62,6 @@ function handleSend() {
     askAlakhSir(text);
 }
 
-// Secure fallback activation
 if (sendBtn && userInput) {
     sendBtn.onclick = handleSend;
     userInput.onkeypress = function(e) {
