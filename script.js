@@ -14,7 +14,7 @@ function appendMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('msg', `${sender}-msg`, 'bounce-in');
     
-    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\"/g, '<strong>$1</strong>');
+    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     
     messageDiv.innerHTML = sender === 'user' ? `<p><strong>You:</strong> ${formattedText}</p>` : `<p>${formattedText}</p>`;
     chatBox.appendChild(messageDiv);
@@ -54,7 +54,7 @@ async function askAlakhSir(userMessage) {
 
     } catch (error) {
         loadingDiv.remove();
-        appendMessage("Suno bhai, connection ko ek baar refresh marna padega! Hard reload (Ctrl + F5) karke ek baar dobara type karo! 🛠️", 'ai');
+        appendMessage("Suno bhai, lagta hai network refresh mang raha hai! Ek baar enter firse dabao! 🛠️", 'ai');
         console.error("Internal Engine Error Details:", error);
     }
 }
