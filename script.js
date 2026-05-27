@@ -1,55 +1,61 @@
-import { GoogleGenAI } from '@google/generative-ai';
+// Connect your live Gemini Brain securely
+const API_KEY = 'AIzaSyCwX8V2wwT5pMGWUGGqiVqkR7S_oDkysdk'; 
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-// Live Google Secure Key
-const API_KEY = 'AIzaSyCwX8V2wwT5pMGWUGGqiVqkR7S_oDkysdk';
-const ai = new GoogleGenAI({ apiKey: API_KEY });
-
-const SYSTEM_INSTRUCTION = `You are not a robot. You are a high-energy, incredibly passionate, and empathetic Indian teacher inspired by the legendary Alakh Pandey (Physics Wallah) style. Your goal is to teach Commerce, Economics, and IT. Follow these strict rules:
-1. Speak in a natural mix of Hindi and English (Hinglish)—just like a friendly elder brother or coach would talk to a student in Mumbai.
-2. Use high-energy catchphrases like: "Suno bhai!", "Concept ko feel karo!", "Ratta mat maaro", and "Dhyan se suniye!"
-3. To explain tough concepts, ALWAYS use relatable local examples (e.g., how a local Vada Pav stall manages profits, how shopkeepers in retail markets track inventory, or how local business firms operate).
-4. Break down complex topics into super simple, step-by-step logic. Never write boring textbooks paragraphs. Use bullet points and exclamation marks to keep the energy high!
-5. End your explanations by checking in on their energy (e.g., "Samajh aaya kya?" or "Clear hua?").`;
+// Alakh Sir Persona Injection Context
+const ALAKH_SIR_RULES = "You are not a robot. You are a high-energy, incredibly passionate, and empathetic Indian teacher inspired by the legendary Alakh Pandey (Physics Wallah) style. Your goal is to teach Commerce, Economics, and IT. Follow these strict rules: 1. Speak in a natural mix of Hindi and English (Hinglish)—just like a friendly elder brother or coach would talk to a student in Mumbai. 2. Use high-energy catchphrases like: 'Suno bhai!', 'Concept ko feel karo!', 'Ratta mat maaro', and 'Dhyan se suniye!' 3. To explain tough concepts, ALWAYS use relatable local examples (e.g., how a local Vada Pav stall manages profits, how shopkeepers in retail markets track inventory, or how local business firms operate). 4. Break down complex topics into super simple, step-by-step logic. Never write boring textbooks paragraphs. Use bullet points and exclamation marks to keep the energy high! 5. End your explanations by checking in on their energy (e.g., 'Samajh aaya kya?' or 'Clear hua?').";
 
 const chatBox = document.getElementById('chatBox');
 const userInput = document.getElementById('userInput');
 const sendBtn = document.getElementById('sendBtn');
 
+// Function to safely inject chats into layout with dynamic animations
 function appendMessage(text, sender) {
     const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', `${sender}-message`);
+    messageDiv.classList.add('msg', `${sender}-msg`, 'bounce-in');
     
-    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\"/g, '<strong>$1</strong>');
     
     messageDiv.innerHTML = sender === 'user' ? `<p><strong>You:</strong> ${formattedText}</p>` : `<p>${formattedText}</p>`;
     chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
+    chatBox.scrollTop = chatBox.scrollHeight; 
 }
 
+// Network Request Processing Layer
 async function askAlakhSir(userMessage) {
-    appendMessage("EduAI is thinking...", "ai");
-    const loadingMessage = chatBox.lastChild;
+    // Dynamic loading module state
+    const loadingDiv = document.createElement('div');
+    loadingDiv.classList.add('msg', 'ai-msg', 'bounce-in');
+    loadingDiv.innerHTML = `<p class="thinking-state">EduAI Master is thinking...</p>`;
+    chatBox.appendChild(loadingDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    // Folding instruction inside core content body payload to resolve connection issues
+    const structuredPrompt = `${ALAKH_SIR_RULES}\n\nUser Prompt: ${userMessage}`;
 
     try {
-        // Connecting safely through Google SDK container
-        const model = ai.getGenerativeModel({ 
-            model: 'gemini-1.5-flash',
-            systemInstruction: SYSTEM_INSTRUCTION
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: structuredPrompt }] }]
+            })
         });
 
-        const result = await model.generateContent({
-            contents: [{ role: 'user', parts: [{ text: userMessage }] }]
-        });
+        const data = await response.json();
+        loadingDiv.remove();
 
-        const aiResponse = result.response.text();
-        
-        loadingMessage.remove();
-        appendMessage(aiResponse, "ai");
+        if (data.candidates && data.candidates[0].content) {
+            const reply = data.candidates[0].content.parts[0].text;
+            appendMessage(reply, 'ai');
+        } else {
+            throw new Error("Payload format error");
+        }
 
     } catch (error) {
-        if (loadingMessage) loadingMessage.remove();
-        appendMessage("Suno bhai, lagta hai backend server configuration mein scene hua hai! Let's get it running! 🛠️", "ai");
-        console.error(error);
+        loadingDiv.remove();
+        appendMessage("Suno bhai, connection ko ek baar refresh marna padega! Hard reload (Ctrl + F5) karke ek baar dobara type karo! 🛠️", 'ai');
+        console.error("Internal Engine Error Details:", error);
     }
 }
 
@@ -62,6 +68,7 @@ function handleSend() {
     askAlakhSir(text);
 }
 
+// Execution Bindings
 if (sendBtn && userInput) {
     sendBtn.onclick = handleSend;
     userInput.onkeypress = function(e) {
