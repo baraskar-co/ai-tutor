@@ -16,7 +16,7 @@ function appendMessage(text, sender) {
     messageDiv.classList.add('message', `${sender}-message`);
     
     // Smooth formatting for line breaks and bold tags
-    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\/g, '<strong>$1</strong>');
+    let formattedText = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     
     messageDiv.innerHTML = sender === 'user' ? `<p><strong>You:</strong> ${formattedText}</p>` : `<p>${formattedText}</p>`;
     chatBox.appendChild(messageDiv);
@@ -53,7 +53,7 @@ async function askAlakhSir(userMessage) {
         appendMessage(aiResponse, "ai");
 
     } catch (error) {
-        loadingMessage.remove();
+        if (loadingMessage) loadingMessage.remove();
         appendMessage("Suno bhai, lagta hai API loading mein thoda scene hua hai! Let's check it again! 🛠️", "ai");
         console.error(error);
     }
@@ -62,15 +62,21 @@ async function askAlakhSir(userMessage) {
 // Handle sending message execution
 function handleSend() {
     const text = userInput.value.trim();
-    if (!text) return;
+    if (!text) return; // Kuch nahi likha toh return ho jaao
 
     appendMessage(text, 'user');
-    userInput.value = ''; // Clear input box
-    askAlakhSir(text);
+    userInput.value = ''; // Input box ko khali karo
+    askAlakhSir(text); // API call run karo
 }
 
-// Event Listeners for click and keyboard Enter keys
-sendBtn.addEventListener('click', handleSend);
-userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSend();
-});
+// Check if elements exist and attach listeners securely
+if (sendBtn && userInput) {
+    sendBtn.onclick = handleSend;
+    userInput.onkeypress = function(e) {
+        if (e.key === 'Enter') {
+            handleSend();
+        }
+    };
+} else {
+    console.error("HTML elements are missing or mismatching!");
+}
