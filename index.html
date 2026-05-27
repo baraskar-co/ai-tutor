@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAI Tutor Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar-left">
+            <div class="logo">
+                <h2>🤖 EduAI Tutor</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="active">📊 Dashboard</a>
+                <a href="#">💼 Commerce</a>
+                <a href="#">🧮 Accountancy</a>
+                <a href="#">📈 Economics</a>
+                <a href="#">💻 IT Commerce</a>
+            </nav>
+            <div class="streak-widget">
+                <p>🔥 Daily Streak: 5 Days</p>
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+            </div>
+        </aside>
+
+        <main class="chat-container">
+            <div class="chat-header">
+                <h3>SmartTutor Chat Interface</h3>
+                <p>Welcome back! What are we mastering today?</p>
+            </div>
+            
+            <div class="chat-box" id="chatBox">
+                <div class="message ai-message">
+                    <p><strong>EduAI:</strong> Hello! Select a subject from the sidebar or ask me anything about your Commerce studies. Let's ace it! 🚀</p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" placeholder="Ask EduAI about any subject..." id="userInput">
+                <button class="send-btn">➔</button>
+            </div>
+        </main>
+
+        <aside class="sidebar-right">
+            <h3>Smart Tools</h3>
+            <div class="tool-box">
+                <h4>📝 Quick Notes</h4>
+                <textarea placeholder="Your generated notes will appear here..."></textarea>
+            </div>
+            <button class="flashcard-btn">✨ Generate Flashcards</button>
+        </aside>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
