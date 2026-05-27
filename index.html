@@ -3,66 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI Tutor Dashboard</title>
+    <title>EduAI Tutor 2.0 - Hyper Animated</title>
     <link rel="stylesheet" href="style.css">
-    <script type="importmap">
-      {
-        "imports": {
-          "@google/generative-ai": "https://esm.run/@google/generative-ai"
-        }
-      }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="dashboard-container">
+    <div class="app-container">
         
-        <aside class="sidebar-left">
-            <div class="logo">
-                <h2>🤖 EduAI Tutor</h2>
+        <aside class="animated-sidebar">
+            <div class="brand-logo">
+                <span class="pulse-dot"></span>
+                <h2>EduAI Pro</h2>
             </div>
-            <nav class="nav-menu">
-                <a href="#" class="active">📊 Dashboard</a>
-                <a href="#">💼 Commerce</a>
-                <a href="#">🧮 Accountancy</a>
-                <a href="#">📈 Economics</a>
-                <a href="#">💻 IT Commerce</a>
+            <nav class="sidebar-links">
+                <a href="#" class="nav-item active">📊 Dashboard</a>
+                <a href="#" class="nav-item">💼 Commerce Base</a>
+                <a href="#" class="nav-item">🧮 Accountancy</a>
+                <a href="#" class="nav-item">📈 Economics Core</a>
+                <a href="#" class="nav-item">💻 IT Commerce</a>
             </nav>
-            <div class="streak-widget">
-                <p>🔥 Daily Streak: 5 Days</p>
-                <div class="progress-bar"><div class="progress-fill"></div></div>
+            <div class="user-stats-card">
+                <p class="streak-text">⚡ Daily Streak: 5 Days</p>
+                <div class="progress-container">
+                    <div class="progress-bar-fill"></div>
+                </div>
             </div>
         </aside>
 
-        <main class="chat-container">
-            <div class="chat-header">
-                <h3>SmartTutor Chat Interface</h3>
-                <p>Welcome back! What are we mastering today?</p>
-            </div>
+        <main class="main-chat-theater">
+            <header class="theater-header">
+                <div class="header-info">
+                    <h1>SmartTutor Interface 2.0</h1>
+                    <p>SYSTEM STATUS: <span class="status-online">READY</span></p>
+                </div>
+            </header>
             
-            <div class="chat-box" id="chatBox">
-                <div class="message ai-message">
-                    <p><strong>EduAI:</strong> Hello! Select a subject from the sidebar or ask me anything about your Commerce studies. Let's ace it! 🚀</p>
+            <div class="chat-display-wall" id="chatBox">
+                <div class="msg ai-msg bounce-in">
+                    <p><strong>EduAI Master:</strong> Suno bhai! Dashboard 2.0 completely live aur dynamic hai. Aaj kaunsa commerce concept feel karna hai? Ratta mat maaro, poochhna shuru karo! 🚀</p>
                 </div>
             </div>
 
-            <div class="input-area">
-                <input type="text" placeholder="Ask EduAI about any subject..." id="userInput">
-                <button class="send-btn" id="sendBtn">➔</button>
+            <div class="input-glow-cluster">
+                <input type="text" placeholder="Ask anything about Commerce, Accounts, Economics..." id="userInput" autocomplete="off">
+                <button class="action-send-btn" id="sendBtn">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="currentColor"/></svg>
+                </button>
             </div>
         </main>
 
-        <aside class="sidebar-right">
-            <h3>Smart Tools</h3>
-            <div class="tool-box">
-                <h4>📝 Quick Notes</h4>
-                <textarea placeholder="Your generated notes will appear here..."></textarea>
-            </div>
-            <button class="flashcard-btn">✨ Generate Flashcards</button>
-        </aside>
-
     </div>
 
-    <script type="module" src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
