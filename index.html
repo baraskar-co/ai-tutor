@@ -47,7 +47,7 @@
 
             <div class="input-glow-cluster">
                 <input type="text" placeholder="Ask anything about Commerce, Accounts, Economics..." id="userInput" autocomplete="off">
-                <button class="action-send-btn" id="sendBtn">
+                <button class="action-send-btn">
                     <svg viewBox="0 0 24 24" width="20" height="20"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="currentColor"/></svg>
                 </button>
             </div>
@@ -55,6 +55,14 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.sh/@google/generative-ai"
+        }
+      }
+    </script>
+    
+    <script type="module" src="script.js"></script>
 </body>
 </html>
