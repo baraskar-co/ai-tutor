@@ -204,3 +204,64 @@ body {
 /* Custom Scrollbar */
 .chat-display-wall::-webkit-scrollbar { width: 6px; }
 .chat-display-wall::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+/* ==========================================
+   MOBILE RESPONSIVENESS FIX (Add to Very End)
+   ========================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        height: -webkit-fill-available; /* Smooth mobile view scaling */
+    }
+
+    .app-container {
+        grid-template-columns: 1fr; /* Sidebar ko screen se hidden/stack karega */
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0px;
+        border: none;
+    }
+
+    .animated-sidebar {
+        display: none; /* Mobile par temporary sidebar hide taaki chat area bada dikhe */
+    }
+
+    .main-chat-theater {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theater-header {
+        padding: 15px 20px;
+    }
+
+    .chat-display-wall {
+        padding: 15px 20px;
+        flex: 1;
+    }
+
+    .msg {
+        max-width: 85%;
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    /* Input area fixes for mobile keyboard pop-up */
+    .input-glow-cluster {
+        padding: 15px 20px;
+        background: #0f111a;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .input-glow-cluster input {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+
+    .action-send-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+}
