@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI Tutor 2.0</title>
+    <title>EduAI Tutor 2.0 - Fixed</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -14,34 +14,35 @@
             <div class="brand-logo"><h2>EduAI Pro</h2></div>
             <nav class="sidebar-links">
                 <a href="#" class="nav-item active">📊 Dashboard</a>
-                <a href="#" class="nav-item">💼 Commerce</a>
-                <a href="#" class="nav-item">📈 Economics</a>
+                <a href="#" class="nav-item">💼 Commerce Base</a>
+                <a href="#" class="nav-item">📈 Economics Core</a>
             </nav>
         </aside>
 
         <!-- Main Chat -->
         <main class="main-chat-theater">
             <header class="theater-header">
-                <h1>SmartTutor Interface 2.0</h1>
-                <p>STATUS: <span style="color: #00ff88;">ONLINE</span></p>
+                <div class="header-info">
+                    <h1>SmartTutor Interface 2.0</h1>
+                    <p>SYSTEM STATUS: <span style="color: #00ff88;">READY</span></p>
+                </div>
             </header>
             
             <div class="chat-display-wall" id="chatBox">
                 <div class="msg ai-msg">
-                    <p><strong>EduAI Master:</strong> Suno bhai! Aaj kaunsa concept feel karna hai? Poochhoge tabhi toh seekhoge! 🚀</p>
+                    <p><strong>EduAI Master:</strong> Suno bhai! Dashboard 2.0 live hai. Aaj kaunsa commerce concept feel karna hai? Poochhoge tabhi toh seekhoge! 🚀</p>
                 </div>
             </div>
 
             <div class="input-glow-cluster">
-                <input type="text" id="userInput" placeholder="Ask anything about Commerce..." autocomplete="off">
+                <input type="text" id="userInput" placeholder="Ask anything about Commerce, Accounts, Economics..." autocomplete="off">
                 <button class="action-send-btn" id="sendBtn">SEND</button>
             </div>
         </main>
     </div>
 
-    <!-- Google Generative AI Library (Standard Version) -->
-    <script src="https://cdn.jsdelivr.net/npm/@google/generative-ai@0.1.0/dist/index.min.js"></script>
-    <!-- Simple Script Connection -->
+    <!-- Google Generative AI Library (Unpkg Version for Stability) -->
+    <script src="https://unpkg.com/@google/generative-ai@0.1.0/dist/index.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
