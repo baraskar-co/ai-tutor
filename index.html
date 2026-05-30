@@ -4,117 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduAI Pro - AI Tutor</title>
+    
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* Modern Minimalist Educational Theme */
-        * {
-            box-sizing: border-box;
+        /* Isse background page ekdum clean rahega aur focus sirf chat par hoga */
+        body {
+            background-color: #0f172a; /* Dark sleek theme matching your bot */
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #f4f7f6;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #1e293b;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 24px;
-            letter-spacing: 0.5px;
-        }
-
-        header p {
-            font-size: 14px;
-            color: #cbd5e1;
-            margin-top: 5px;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-            border-top: 5px solid #3b82f6;
-        }
-
-        .container h2 {
-            color: #1e293b;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .container p {
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            font-size: 15px;
-        }
-
-        .badge {
-            background-color: #e0f2fe;
-            color: #0369a1;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background-color: #0f172a;
-            color: #94a3b8;
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
+            height: 100vh;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>EduAI Pro Master</h1>
-        <p>Your Ultimate Smart Learning Companion</p>
-    </header>
-
-    <main>
-        <div class="container">
-            <span class="badge">Ahad Sir Avatar Active 🔥</span>
-            <h2>Welcome to my AI Tutor Website!</h2>
-            <p>
-                Yahan aap Economics, Commerce, Accountancy aur IT ke mushkil se mushkil concepts ko ekdum makkhan tarike se seekh sakte hain. Right side mein neeche diye gaye chat bubble par click kijiye aur Ahad Sir ke saath apni padhai shuru kijiye!
-            </p>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 EduAI Pro Studio. Powered by Botpress & GitHub Pages.</p>
-    </footer>
+    <script src="script.js"></script>
 
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/05/28/19/20260528195124-S12PK2SO.js" defer></script>
+
+    <script>
+        window.addEventListener('load', () => {
+            const launchChat = setInterval(() => {
+                if (window.botpress && typeof window.botpress.open === 'function') {
+                    window.botpress.open();
+                    clearInterval(launchChat); // Loop ko band karne ke liye jaise hi chat open ho
+                }
+            }, 100); // Har 100ms mein verify karega super fast speed ke liye
+        });
+    </script>
 
 </body>
 </html>
