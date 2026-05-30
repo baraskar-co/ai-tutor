@@ -3,43 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI Tutor 2.0 - Final</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>EduAI Pro - AI Tutor</title>
+    <style>
+        /* Modern Minimalist Educational Theme */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-top: 5px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            border-top: 5px solid #3b82f6;
+        }
+
+        .container h2 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .container p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .badge {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <aside class="animated-sidebar">
-            <div class="brand-logo"><h2>EduAI Pro</h2></div>
-            <nav class="sidebar-links">
-                <a href="#" class="nav-item active">📊 Dashboard</a>
-                <a href="#" class="nav-item">💼 Commerce Base</a>
-                <a href="#" class="nav-item">📈 Economics Core</a>
-            </nav>
-        </aside>
 
-        <main class="main-chat-theater">
-            <header class="theater-header">
-                <div class="header-info">
-                    <h1>SmartTutor Interface 2.0</h1>
-                    <p>SYSTEM STATUS: <span style="color: #00ff88;">READY</span></p>
-                </div>
-            </header>
-            
-            <div class="chat-display-wall" id="chatBox">
-                <div class="msg ai-msg">
-                    <p><strong>EduAI Master:</strong> Suno bhai! Dashboard live hai. Aaj kaunsa commerce ya economics ka concept feel karna hai? Poochhoge tabhi toh seekhoge! 🚀</p>
-                </div>
-            </div>
+    <header>
+        <h1>EduAI Pro Master</h1>
+        <p>Your Ultimate Smart Learning Companion</p>
+    </header>
 
-            <div class="input-glow-cluster">
-                <input type="text" id="userInput" placeholder="Ask anything about Commerce, Accounts, Economics..." autocomplete="off">
-                <button class="action-send-btn" id="sendBtn">SEND</button>
-            </div>
-        </main>
-    </div>
+    <main>
+        <div class="container">
+            <span class="badge">Ahad Sir Avatar Active 🔥</span>
+            <h2>Welcome to my AI Tutor Website!</h2>
+            <p>
+                Yahan aap Economics, Commerce, Accountancy aur IT ke mushkil se mushkil concepts ko ekdum makkhan tarike se seekh sakte hain. Right side mein neeche diye gaye chat bubble par click kijiye aur Ahad Sir ke saath apni padhai shuru kijiye!
+            </p>
+        </div>
+    </main>
 
-    <script src="https://unpkg.com/@google/generative-ai@0.1.0/dist/index.min.js"></script>
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2026 EduAI Pro Studio. Powered by Botpress & GitHub Pages.</p>
+    </footer>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2026/05/28/19/20260528195124-S12PK2SO.js" defer></script>
+
 </body>
 </html>
