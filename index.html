@@ -3,88 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI Pro - Premium AI Tutor</title>
+    <title>EduAI Pro - Premium AI Studio</title>
     
     <link rel="stylesheet" href="style.css">
     
     <style>
-        /* Premium Dark Gradient UI */
+        /* Ultra-Premium Cyberpunk-Academic Theme */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1e38 50%, #090d16 100%);
+            background: radial-gradient(circle at top right, #1e1e38 0%, #0f172a 60%, #05070f 100%);
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Glassmorphism Loading Container */
-        .premium-loader {
+        /* Full Screen Decorative Abstract Grid Overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Premium Intro Card */
+        .premium-dashboard {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 24px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            max-width: 85%;
-            width: 340px;
-            animation: fadeIn 1.2s ease-in-out;
+            padding: 50px 40px;
+            background: rgba(15, 23, 42, 0.45);
+            border-radius: 28px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 440px;
+            animation: cardSmoothEntrance 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Glowing Animated Ring */
-        .glow-ring {
-            width: 60px;
-            height: 60px;
-            border: 3px solid transparent;
-            border-top: 3px solid #3b82f6;
-            border-right: 3px solid #10b981;
+        /* Glowing Status Indicator */
+        .live-pulse-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 6px 16px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #3b82f6;
             border-radius: 50%;
-            margin: 0 auto 20px;
-            animation: spin 1s linear infinite;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 10px #3b82f6;
+            animation: pulse 1.8s infinite;
         }
 
-        .premium-loader h1 {
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .premium-loader p {
-            color: #94a3b8;
-            font-size: 13px;
-            margin-bottom: 18px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(16, 185, 129, 0.15);
-            color: #34d399;
-            border-radius: 20px;
+        .pulse-text {
+            color: #93c5fd;
             font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Smooth Animations */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* Premium Typography */
+        .premium-dashboard h1 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10deg); }
-            to { opacity: 1; transform: translateY(0); }
+        .premium-dashboard h2 {
+            color: #3b82f6;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .premium-dashboard p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Keyframe Animations */
+        @keyframes cardSmoothEntrance {
+            from { opacity: 0; transform: scale(0.96) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(59, 130, 246, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
         }
     </style>
 </head>
@@ -92,11 +127,16 @@
 
     <script src="script.js"></script>
 
-    <div class="premium-loader">
-        <div class="glow-ring"></div>
+    <div class="premium-dashboard">
+        <div class="live-pulse-container">
+            <div class="pulse-dot"></div>
+            <div class="pulse-text">Smart Session Active</div>
+        </div>
         <h1>EduAI Pro Studio</h1>
-        <p>Connecting with Ahad Sir Avatar...</p>
-        <span class="status-badge">Secure Server Live</span>
+        <h2>Next-Gen AI Tutoring</h2>
+        <p>
+            Welcome to the future of learning. Yahan Economics, Commerce, Accountancy aur IT ke bade-bade concepts ekdum crystal clear ho jayenge. Ahad Sir ka interactive avatar right side se automatic initiate ho raha hai... Get ready to rock your studies!
+        </p>
     </div>
 
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
@@ -109,7 +149,7 @@
                     window.botpress.open();
                     clearInterval(launchPremiumChat);
                 }
-            }, 100);
+            }, 50); // Speed 50ms kar di hai taaki bina ruko turant open ho!
         });
     </script>
 
