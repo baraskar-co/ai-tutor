@@ -3,17 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduAI Pro - AI Tutor</title>
+    <title>EduAI Pro - Premium AI Tutor</title>
     
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        /* Isse background page ekdum clean rahega aur focus sirf chat par hoga */
-        body {
-            background-color: #0f172a; /* Dark sleek theme matching your bot */
+        /* Premium Dark Gradient UI */
+        body, html {
             margin: 0;
             padding: 0;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1e38 50%, #090d16 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Glassmorphism Loading Container */
+        .premium-loader {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            max-width: 85%;
+            width: 340px;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        /* Glowing Animated Ring */
+        .glow-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top: 3px solid #3b82f6;
+            border-right: 3px solid #10b981;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .premium-loader h1 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .premium-loader p {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Smooth Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10deg); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -21,17 +92,24 @@
 
     <script src="script.js"></script>
 
+    <div class="premium-loader">
+        <div class="glow-ring"></div>
+        <h1>EduAI Pro Studio</h1>
+        <p>Connecting with Ahad Sir Avatar...</p>
+        <span class="status-badge">Secure Server Live</span>
+    </div>
+
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/05/28/19/20260528195124-S12PK2SO.js" defer></script>
 
     <script>
         window.addEventListener('load', () => {
-            const launchChat = setInterval(() => {
+            const launchPremiumChat = setInterval(() => {
                 if (window.botpress && typeof window.botpress.open === 'function') {
                     window.botpress.open();
-                    clearInterval(launchChat); // Loop ko band karne ke liye jaise hi chat open ho
+                    clearInterval(launchPremiumChat);
                 }
-            }, 100); // Har 100ms mein verify karega super fast speed ke liye
+            }, 100);
         });
     </script>
 
